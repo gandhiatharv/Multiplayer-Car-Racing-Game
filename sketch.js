@@ -39,6 +39,8 @@ function draw(){
   if(gameState === 1){
     clear();
     game.play();
+    lobbysound.stop();
+    endsound.stop();
     playsound.play();
     if(frameCount%7020 === 0){
       playsound.play();
@@ -47,10 +49,14 @@ function draw(){
 
   if(gameState === 2){
     game.end();
+    lobbysound.stop();
+    playsound.stop();
     endsound.play();
   }
 
   if(gameState === 0){
+playsound.stop();
+endsound.stop();
 lobbysound.play();
 if(frameCount%6870 === 0){
   lobbysound.play();
