@@ -44,6 +44,8 @@ class Game {
     textSize(30);
     text("Game Start", 120, 100)
     Player.getPlayerInfo();
+player.getCarsAtEnd();
+
 
     if(allPlayers !== undefined){
       background(ground);
@@ -58,10 +60,14 @@ class Game {
         y = displayHeight-allPlayers[plr].distance;
         cars[index-1].x = x;
         cars[index-1].y = y;
-        if (index === player.index)
+        if (index === player.index){
+          stroke(10);
+          fill("red");
+          ellipse(x, y, 60, 60);
           cars[index-1].shapeColor = "red";
           camera.position.x = displayWidth/2;
           camera.position.y = cars[index-1].y;
+        }
 
       }
     }
@@ -73,11 +79,14 @@ class Game {
     }
     if(player.distance > 5250){
       gameState = 2;
-      //swal({ title: `Awesome!${"\n"}Rank${"\n"}${player.rank}`, text: "You reached the finish line successfully", imageUrl: "https://raw.githubusercontent.com/vishalgaddam873/p5-multiplayer-car-race-game/master/assets/cup.png", imageSize: "100x100", confirmButtonText: "Ok", });
+      player.rank+=1;
+      Player.updateCarsAtEnd(player.rank);
+      swal({ title: `Awesome!${"\n"}Rank${"\n"}${player.rank}`, text: "You reached the finish line successfully.", imageUrl: "https://raw.githubusercontent.com/vishalgaddam873/p5-multiplayer-car-race-game/master/assets/cup.png", imageSize: "100x100", confirmButtonText: "Ok", });
     }
     drawSprites();
   }
   end(){
     console.log("Game Ended");
+    console.log(player.rank);
   }
 }
