@@ -43,7 +43,7 @@ function draw(){
   if(gameState === 1){
     clear();
     game.play();
-    spawnObstacles();
+    //spawnObstacles();
     lobbysound.stop();
     endsound.stop();
     //playsound.play();
