@@ -22,8 +22,6 @@ class Form {
     this.input.position(displayWidth/2-100, displayHeight/2-80);
     this.button.position(displayWidth/2-75, displayHeight/2);
 
-    this.reset.position(displayWidth-234, 20);
-
     this.button.mousePressed(()=>{
       this.input.hide();
       this.button.hide();
@@ -48,4 +46,9 @@ location.reload();
 })
 
   }
+  
+  showReset(){
+      this.reset.position(displayWidth-234, 20);
+}
+  
 }
