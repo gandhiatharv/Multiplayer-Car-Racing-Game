@@ -41,6 +41,7 @@ class Game {
 
   play(){
     form.hide();
+    form.showReset();
     textSize(30);
     text("Game Start", 120, 100)
     Player.getPlayerInfo();
