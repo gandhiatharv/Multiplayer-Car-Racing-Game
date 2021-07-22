@@ -7,7 +7,7 @@ class Form {
     this.button = createButton('Play');
     this.greeting = createElement('h2');
     this.greeting2 = createElement('h2');
-    this.reset = createButton("Reset");
+    this.reset = createButton('Reset');
   }
   hide(){
     this.greeting.hide();
@@ -15,10 +15,13 @@ class Form {
     this.button.hide();
     this.input.hide();
     this.welcome.hide();
+    this.reset.show();
+    this.reset.position(displayWidth-233, 20);
   }
 
   display(){
     this.welcome.position(0, 0);
+    this.reset.hide();
     this.input.position(displayWidth/2-100, displayHeight/2-80);
     this.button.position(displayWidth/2-75, displayHeight/2);
 
@@ -46,9 +49,5 @@ location.reload();
 })
 
   }
-  
-  showReset(){
-      this.reset.position(displayWidth-234, 20);
-}
-  
+
 }

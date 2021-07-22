@@ -27,13 +27,13 @@ class Game {
 
       form.display();
     }
-    car1 = createSprite(0, 200);
+    car1 = createSprite(100, 200);
     car1.addImage(car1img);
-    car2 = createSprite(200, 200);
+    car2 = createSprite(300, 200);
     car2.addImage(car2img);
-    car3 = createSprite(400, 200);
+    car3 = createSprite(500, 200);
     car3.addImage(car3img);
-    car4 = createSprite(600, 200);
+    car4 = createSprite(700, 200);
     car4.addImage(car4img);
     cars = [car1, car2, car3, car4];
 
@@ -41,7 +41,6 @@ class Game {
 
   play(){
     form.hide();
-    form.showReset();
     textSize(30);
     text("Game Start", 120, 100)
     Player.getPlayerInfo();
@@ -80,10 +79,22 @@ player.getCarsAtEnd();
     }
     if(player.distance > 5250){
       gameState = 2;
+      lobbysound.stop();
+      playsound.stop();
+      endsound.play();
       player.rank+=1;
       Player.updateCarsAtEnd(player.rank);
-      swal({ title: `Awesome!${"\n"}Rank${"\n"}${player.rank}`, text: "You reached the finish line successfully.", imageUrl: "https://raw.githubusercontent.com/vishalgaddam873/p5-multiplayer-car-race-game/master/assets/cup.png", imageSize: "100x100", confirmButtonText: "Ok", });
+      console.log(player.rank);
+      if(player.rank === 1){
+      swal({ title: `1st Place!`, text: "Sensational job! You were ridiculously fast!", imageUrl: "https://raw.githubusercontent.com/vishalgaddam873/p5-multiplayer-car-race-game/master/assets/cup.png", imageSize: "100x100", confirmButtonText: "Ok", });
+    } else if (player.rank === 2){
+      swal({ title: `2nd Place!`, text: "Awesome! Second place is just the first place loser.", imageUrl: "https://raw.githubusercontent.com/vishalgaddam873/p5-multiplayer-car-race-game/master/assets/cup.png", imageSize: "100x100", confirmButtonText: "Ok", });
+    } else if (player.rank === 3){
+      swal({ title: `3rd Place`, text: "Great effort! You're not too far out from 1st!", imageUrl: "https://raw.githubusercontent.com/vishalgaddam873/p5-multiplayer-car-race-game/master/assets/cup.png", imageSize: "100x100", confirmButtonText: "Ok", });
+    } else{
+      swal({ title: `Last Place`, text: "It's okay! Once you put more time, energy, and thought on the track, you will be a moonshiner.", imageUrl: "https://raw.githubusercontent.com/vishalgaddam873/p5-multiplayer-car-race-game/master/assets/cup.png", imageSize: "100x100", confirmButtonText: "Ok", });
     }
+  }
     drawSprites();
   }
   end(){
