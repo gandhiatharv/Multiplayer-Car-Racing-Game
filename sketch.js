@@ -4,6 +4,8 @@ var gameState = 0;
 var playerCount;
 var allPlayers;
 var distance = 0;
+var tries = 2;
+var tries2 = 2;
 var database;
 var car1, car2, car3, car4, cars;
 var car1img, car2img, car3img, car4img, track, ground, lobbysound, playsound, endsound;
@@ -40,39 +42,36 @@ function draw(){
   if(playerCount === 4){
     game.update(1);
   }
+
+if(tries === 2 && playerCount === 4){
+  lobbysound.stop();
+  endsound.stop();
+  playsound.play();
+  tries = tries - 1;
+}
+
+if(tries2 === 2 && playerCount < 4){
+  endsound.stop();
+  playsound.stop();
+  lobbysound.play();
+  tries2 = tries2 - 1;
+}
+
   if(gameState === 1){
     clear();
     game.play();
-    //spawnObstacles();
-    lobbysound.stop();
-    endsound.stop();
-    //playsound.play();
-    if(frameCount%7020 === 0){
-      //playsound.play();
-      }
+    spawnObstacles();
   }
 
   if(gameState === 2){
     game.end();
-    lobbysound.stop();
-    playsound.stop();
-    //endsound.play();
   }
-
-  if(gameState === 0){
-playsound.stop();
-endsound.stop();
-//lobbysound.play();
-if(frameCount%6870 === 0){
-  //lobbysound.play();
-  }
-}
 }
 
 function spawnObstacles(){
-    if(frameCount%60 === 0 && gameState === 1){
-      obstacle = createSprite(Math.round(random(200, width-150)), 0, 200, 200);
-      obstacle.lifetime = 1000;
+    if(frameCount%30 === 0 && gameState === 1){
+      obstacle = createSprite(Math.round(random(430, width-400)), 0, 200, 200);
+      obstacle.lifetime = 300;
       obstacle.velocityY = 7;
       obstacle.scale = 0.1;
       var rand = Math.round(random(1, 3));
