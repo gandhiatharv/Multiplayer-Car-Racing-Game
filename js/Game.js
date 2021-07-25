@@ -27,13 +27,13 @@ class Game {
 
       form.display();
     }
-    car1 = createSprite(100, 200);
+    car1 = createSprite(displayWidth/4, 200);
     car1.addImage(car1img);
-    car2 = createSprite(300, 200);
+    car2 = createSprite(displayWidth/4, 200);
     car2.addImage(car2img);
-    car3 = createSprite(500, 200);
+    car3 = createSprite(displayWidth/4, 200);
     car3.addImage(car3img);
-    car4 = createSprite(700, 200);
+    car4 = createSprite(displayWidth/4, 200);
     car4.addImage(car4img);
     cars = [car1, car2, car3, car4];
 
@@ -51,12 +51,12 @@ player.getCarsAtEnd();
       background(ground);
       image(track, 0, -displayHeight*4, displayWidth, displayHeight*5); 
       var index = 0;
-      var x = 225;
+      var x = displayWidth/10;
       var y;
       //var display_position = 130;
       for(var plr in allPlayers){
         index = index + 1;
-        x = x + 275;
+        x = x + displayWidth/6.4;
         y = displayHeight-allPlayers[plr].distance;
         cars[index-1].x = x;
         cars[index-1].y = y;
