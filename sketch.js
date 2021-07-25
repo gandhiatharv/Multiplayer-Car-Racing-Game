@@ -8,8 +8,9 @@ var tries = 2;
 var tries2 = 2;
 var database;
 var car1, car2, car3, car4, cars;
-var car1img, car2img, car3img, car4img, track, ground, lobbysound, playsound, endsound;
+var car1img, car2img, car3img, car4img, ground, lobbysound, playsound, endsound;
 var obstacle1, obstacle2, obstacle3;
+var track
 
 var form, player, game;
 
@@ -70,7 +71,7 @@ if(tries2 === 2 && playerCount < 4){
 
 function spawnObstacles(){
     if(frameCount%30 === 0 && gameState === 1){
-      obstacle = createSprite(Math.round(random(430, width-400)), 0, 200, 200);
+      obstacle = createSprite(Math.round(random(displayWidth/4.4, displayWidth/1.29)), 0, 200, 200);
       obstacle.lifetime = 300;
       obstacle.velocityY = 7;
       obstacle.scale = 0.1;
