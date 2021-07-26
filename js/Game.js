@@ -46,6 +46,22 @@ class Game {
     Player.getPlayerInfo();
 player.getCarsAtEnd();
 
+  if(frameCount%10 === 0 && gameState === 1){
+    //obstacle = createSprite(Math.round(random(displayWidth/4.4, displayWidth/1.29)), 0, 200, 200);
+    obstacle = createSprite(Math.round(random(displayWidth/4.4, displayWidth/1.29)), camera.position.y-displayHeight/2, 200, 200);
+    obstacle.lifetime = 200;
+    obstacle.velocityY = 7;
+    obstacle.scale = 0.1;
+    var rand = Math.round(random(1, 3));
+    if(rand === 1){
+      obstacle.addImage(obstacle1);
+    } else if(rand === 2){
+      obstacle.addImage(obstacle2);
+    } else{
+      obstacle.addImage(obstacle3);
+    }
+  }
+
 
     if(allPlayers !== undefined){
       background(ground);
@@ -53,11 +69,15 @@ player.getCarsAtEnd();
       var index = 0;
       var x = displayWidth/10;
       var y;
+      var z1;
+      var z2;
       //var display_position = 130;
       for(var plr in allPlayers){
         index = index + 1;
         x = x + displayWidth/6.4;
         y = displayHeight-allPlayers[plr].distance;
+        z1 = displayWidth/2-allPlayers[plr].distance1;
+        z2 = displayWidth/2-allPlayers[plr].distance2;
         cars[index-1].x = x;
         cars[index-1].y = y;
         if (index === player.index){
@@ -77,6 +97,17 @@ player.getCarsAtEnd();
       player.distance +=50
       player.update();
     }
+
+    if(keyIsDown(LEFT_ARROW)){
+      player.distance1 -=50
+      //ellipse(cars[index-1].x, cars[index-1].y, 60, 60);
+    }
+  
+    if(keyIsDown(RIGHT_ARROW)){
+      player.distance2 +=50
+      //ellipse(cars[index-1].x, cars[index-1].y, 60, 60);
+    }
+
     if(player.distance > 5250){
       gameState = 2;
       lobbysound.stop();
