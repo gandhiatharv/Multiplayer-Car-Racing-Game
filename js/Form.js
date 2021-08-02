@@ -3,7 +3,7 @@ class Form {
   constructor() {
     this.welcomeBG = "images/background.jpg";
     this.welcome = createImg(this.welcomeBG);
-    this.input = createInput("Nickname");
+    this.input = createInput("").attribute("placeholder", "Nickname");
     this.button = createButton('Play');
     this.greeting = createElement('h2');
     this.greeting2 = createElement('h2');
@@ -18,12 +18,27 @@ class Form {
     this.reset.show();
     this.reset.position(displayWidth/1.16, displayHeight/45);
   }
+  enter() {
+    this.input.hide();
+    this.button.hide();
 
+    player.name = this.input.value();
+    playerCount++;
+    player.index = playerCount;
+    player.updateName();
+    player.updateCount(playerCount);
+
+    this.greeting.html("Welcome " + player.name + "!");
+    this.greeting.position(
+      displayWidth / 2.1 - player.name.length * (displayWidth / 110),
+      125
+    );
+  }
   display(){
     this.welcome.position(0, 0);
-    this.reset.hide();
     this.input.position(displayWidth/2.5, displayHeight/2.7);
     this.button.position(displayWidth/2.4, displayHeight/2);
+    this.reset.hide();
 
     this.button.mousePressed(()=>{
       this.input.hide();
@@ -42,9 +57,12 @@ class Form {
 this.reset.mousePressed(()=>{
 player.updateCount(0);
 game.update(0);
+Player.updateCarsAtEnd(0);
 var playerInfoRef = database.ref('players');
 playerInfoRef.remove();
-Player.updateCarsAtEnd(0);
+database.ref("/").update({
+  finishedPlayers: 0,
+});
 location.reload();
 })
 
