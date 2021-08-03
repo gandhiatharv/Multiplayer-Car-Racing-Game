@@ -79,6 +79,7 @@ player.getFinishedPlayers();
         cars[index-1].x = x;
         cars[index-1].y = y;
         textAlign(CENTER);
+        fill("red");
         textSize(20);
         text(allPlayers[plr].name, cars[index-1].x, cars[index-1].y+75);
         if (index === player.index){
