@@ -58,7 +58,8 @@ function setup(){
 
 for(var i = 0; i < 12; i++){
   w = random(displayWidth/4.4, displayWidth/1.29);
-  h = random(-height*4, 0);
+  //h = random(-height*4, 0);
+  h = -height*3.8;
   rand = Math.round(random(1, 9));
   if (rand === 1){
   f1 = createSprite(w, h);
