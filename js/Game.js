@@ -78,6 +78,8 @@ player.getFinishedPlayers();
         y = displayHeight-allPlayers[plr].distance;
         cars[index-1].x = x;
         cars[index-1].y = y;
+        strokeWeight(2);
+        stroke("red");
         textAlign(CENTER);
         fill("red");
         textSize(20);
