@@ -4,7 +4,7 @@ class Form {
     this.welcomeBG = "images/background.jpg";
     this.welcome = createImg(this.welcomeBG);
     this.input = createInput("").attribute("placeholder", "Nickname");
-    this.button = createButton('Start Racing');
+    this.button = createButton('Play');
     this.greeting = createElement('h2');
     this.greeting2 = createElement('h2');
     this.reset = createButton('Reset');
