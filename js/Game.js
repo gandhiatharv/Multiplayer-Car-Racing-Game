@@ -100,7 +100,7 @@ player.getFinishedPlayers();
       }
       console.log(displayHeight);
         console.log(player.distance);
-        if(player.distance>=5250 && tries3 === 2){
+        if(player.distance>=height*5 && tries3 === 2){
           tries3 = tries3 - 1;
           lobbysound.stop();
     playsound.stop();
@@ -117,7 +117,7 @@ player.getFinishedPlayers();
     } else{
       swal({ title: `Last Place`, text: "It's okay! Once you put more time, energy, and thought on the track, you will be a moonshiner.", imageUrl: "https://raw.githubusercontent.com/whitehatjr/PiratesInvasion/main/assets/boat.png", imageSize: "150x150", confirmButtonText: "Ok", });
     }
-    } else if(player.distance < 5250){
+    } else if(player.distance < height*5){
               if(keyIsDown(38) && player.index !== null){
                   yVel += 0.9;
               }else if(keyIsDown(40) && player.index !== null){
@@ -131,7 +131,7 @@ player.getFinishedPlayers();
                   xVel *= 0.9;
               }else{
                   yVel *= 0.985;
-                  xVel *= 0.985;
+                  xVel *= 0.985; 
               }
             }else if(passedFinish === false){
               yVel *= 0.7;
