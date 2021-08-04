@@ -114,6 +114,14 @@ for(var i = 0; i < 12; i++){
 
 
 function draw(){
+  
+      if (!playsound.isPlaying()&&gameState === 1) {
+    playsound.play();
+  }
+      if (!lobbysound.isPlaying()&&gameState === 0) {
+    lobbysound.play();
+  }
+  
   if(playerCount === 4 && finishedPlayers === 0){
     game.update(1);
   }
